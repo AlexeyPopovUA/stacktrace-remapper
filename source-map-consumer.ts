@@ -1,9 +1,10 @@
-import {SourceMapConsumer} from 'source-map';
+// Reads a source map and creates mapping. Provides with ability to get original pointer position from the generated one
+import {MappedPosition, SourceMapConsumer} from 'source-map';
 import * as _ from 'lodash';
 import * as fs from 'fs';
 import * as util from 'util';
-import {parse} from 'error-stack-parser';
-import {StackFrame} from 'error-stack-parser';
+// reads an error stack trace and generates a parsed interpretation as an Array of records
+import {parse, StackFrame} from 'error-stack-parser';
 
 const readFile = util.promisify(fs.readFile);
 
@@ -35,15 +36,17 @@ function transformStackTrace (sourceMapPath: string, stackTraceString: string): 
 }
 
 function getOriginalStackFrame(data: StackFrame, sourceConsumer: SourceMapConsumer): any {
-    const test = sourceConsumer.originalPositionFor({
+    const test: MappedPosition = sourceConsumer.originalPositionFor({
         line: data.lineNumber,
         column: data.columnNumber
     });
+
     return {
         column: test.column,
         source: test.source,
         line: test.line,
         name: test.name,
+        // Redundant info for the future tuning
         generatedSource: data.source,
         generatedName: data.functionName
     };
