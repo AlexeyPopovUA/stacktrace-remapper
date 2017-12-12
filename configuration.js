@@ -17,5 +17,6 @@ e()@file:///var/containers/Bundle/Application/76D89283-9AB7-4F7C-8934-006341EB2F
 exports()@file:///var/containers/Bundle/Application/76D89283-9AB7-4F7C-8934-006341EB2F81/fotoknudsen-release.app/www/js/edit.js?cache=1511451189311:1:25476
 {anonymous}()@file:///var/containers/Bundle/Application/76D89283-9AB7-4F7C-8934-006341EB2F81/fotoknudsen-release.app/www/js/edit.js?cache=1511451189311:2:12214
 v()@file:///var/containers/Bundle/Application/76D89283-9AB7-4F7C-8934-006341EB2F81/fotoknudsen-release.app/www/js/edit.js?cache=1511451189311:2:12072
-b()@file:///var/containers/Bundle/Application/76D89283-9AB7-4F7C-8934-006341EB2F81/fotoknudsen-release.app/www/js/edit.js?cache=1511451189311:2:12097`
+b()@file:///var/containers/Bundle/Application/76D89283-9AB7-4F7C-8934-006341EB2F81/fotoknudsen-release.app/www/js/edit.js?cache=1511451189311:2:12097
+`
 };
