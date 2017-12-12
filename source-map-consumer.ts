@@ -8,7 +8,7 @@ import {parse, StackFrame} from 'error-stack-parser';
 
 const readFile = util.promisify(fs.readFile);
 
-function transformStackTrace (sourceMapPath: string, stackTraceString: string): Promise<string> {
+export function transformStackTrace (sourceMapPath: string, stackTraceString: string): Promise<string> {
     return readFile(sourceMapPath, {encoding: 'utf8'})
         .then(file => JSON.parse(file))
         .then(rawSourceMap => {
@@ -24,10 +24,10 @@ function transformStackTrace (sourceMapPath: string, stackTraceString: string): 
                     if (frame.line) {
                         return getFormattedLine(frame.name, frame.source, frame.line, frame.column);
                     } else {
-                        // First line of stack
-                        return `${frame.generatedSource}\n${getFormattedLine('Function name', 'Source file', 'Line', 'Column')})`;
+                        return frame.generatedSource;
                     }
                 })
+                .tap(list => list.unshift(getFormattedLine('Function name', 'Source file', 'Line', 'Column')))
                 .value();
 
             return result.join('\n');
@@ -56,6 +56,7 @@ function getFormattedLine(name: string, source: string, line: string, column: st
     return `${_.padEnd(name, 20, " ")} ${_.padEnd(source, 70)} : ${_.padEnd(line, 10)} : ${_.padEnd(column, 10)}`;
 }
 
+/*
 export {
     transformStackTrace
-};
+};*/
