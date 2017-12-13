@@ -2,11 +2,15 @@
 
 ##Usage
 
+Help
+
+`node . -h`
+
 Usage with cmd parameters:
 
-// todo Currently is not working. Have no idea how to use cmd with multiline parameters **conviniently**
-
 `node . -m "path to the source map" -s "inlined stack trace"`
+
+// todo Currently is not working. Have no idea how to use cmd with multiline parameters **conviniently**
 
 Usage with config file:
 
