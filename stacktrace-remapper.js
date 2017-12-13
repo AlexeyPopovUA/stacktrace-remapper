@@ -1,6 +1,6 @@
 const program = require('commander');
 require('ts-node/register');
-const {transformStackTrace} = require('./source-map-consumer');
+const {transformStackTrace} = require('./source-map-transformer');
 
 program
     .version('1.0.0')
