@@ -6,13 +6,13 @@ Help
 
 `node . -h`
 
-Usage with cmd parameters:
+###Usage with cmd parameters
 
-`node . -m "path to the source map" -s "inlined stack trace"`
+Stack trace should be passed as a `stdin` to the application together with the path to the related source map. Example for macOS:
 
-// todo Currently is not working. Have no idea how to use cmd with multiline parameters **conviniently**
+`pbpaste | node . -m ./../editor_mobile/src/www/js/edit.js.map`
 
-Usage with config file:
+###Usage with config file
 
 `node . -c "path to the configuration js file"`
 
