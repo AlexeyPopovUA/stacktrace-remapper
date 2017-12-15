@@ -1,5 +1,7 @@
 # stacktrace-remapper
 
+[![Quality Gate](https://sonarcloud.io/api/badges/gate?key=universal-logger)](https://sonarcloud.io/dashboard/index/universal-logger)
+
 ##Usage
 
 Help
