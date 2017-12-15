@@ -22,12 +22,12 @@ export function transformStackTrace (sourceMapPath: string, stackTraceString: st
                 .map(frame => getOriginalStackFrame(frame, smc))
                 .map(frame => {
                     if (frame.line) {
-                        return getFormattedLine(frame.name, frame.source, frame.line, frame.column);
+                        return getFormattedLine(frame.generatedName, frame.name, frame.source, frame.line, frame.column);
                     } else {
                         return frame.generatedSource;
                     }
                 })
-                .tap(list => list.unshift(getFormattedLine('Function name', 'Source file', 'Line', 'Column')))
+                .tap(list => list.unshift(getFormattedLine('Generated name','Original name', 'Source file', 'Line', 'Column')))
                 .value();
 
             return result.join('\n');
@@ -52,11 +52,6 @@ function getOriginalStackFrame(data: StackFrame, sourceConsumer: SourceMapConsum
     };
 }
 
-function getFormattedLine(name: string, source: string, line: string, column: string) {
-    return `${_.padEnd(name, 20, " ")} ${_.padEnd(source, 70)} : ${_.padEnd(line, 10)} : ${_.padEnd(column, 10)}`;
+function getFormattedLine(generatedName: string, name: string, source: string, line: string, column: string) {
+    return `${_.padEnd(generatedName, 20)} ${_.padEnd(name, 20)} ${_.padEnd(source, 70)} : ${_.padEnd(line, 10)} : ${_.padEnd(column, 10)}`;
 }
-
-/*
-export {
-    transformStackTrace
-};*/
